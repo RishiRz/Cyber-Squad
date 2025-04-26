@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Verification</title>
+    <link rel="stylesheet" href="common.css" />
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Donar Verification</h2>
+    <form id="licenceForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required>
+
+        <label for="licenceNumber">Licence Number:</label>
+        <input type="text" id="licenceNumber" required>
+
+        <!-- <label for="Blood Test Report">Blood Test Report</label>
+        <select id="Blood test Report" required>
+            
+        </select> -->
+
+        <!-- Label -->
+<label for="bloodTestReport">Blood Test Report</label>
+
+<!-- File Upload Input -->
+<input type="file" id="bloodTestReport" accept=".pdf,.jpg,.jpeg,.png" required>
+
+
+<!-- Placeholder to show the uploaded file (preview or link) -->
+<div id="reportPreview" style="margin-top:10px;"></div>
+
+<!-- Optional icon or visual -->
+<i class="fa fa-address-card-o" aria-hidden="true" style="font-size:24px;"></i>
+
+<!-- Script to preview the uploaded report -->
+<script>
+  document.getElementById('bloodTestReport').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('reportPreview');
+
+    if (file) {
+      const fileURL = URL.createObjectURL(file);
+      if (file.type === "application/pdf") {
+        preview.innerHTML = `<p>PDF uploaded: <a href="${fileURL}" target="_blank">View Report</a></p>`;
+      } else if (file.type.startsWith("image/")) {
+        preview.innerHTML = `<p>Image preview:</p><img src="${fileURL}" alt="Blood Test Report" style="max-width:300px; border:1px solid #ccc; border-radius:8px;">`;
+      } else {
+        preview.textContent = "Unsupported file type.";
+      }
+    } else {
+      preview.textContent = "";
+    }
+  });
+</script>
+
+
+        <label for="bloodGroup">Blood Group:</label>
+        <select id="bloodGroup" required>
+            <option value="">Select</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+    <script>
+        document.getElementById('licenceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const dob = document.getElementById('dob').value;
+            const licenceNumber = document.getElementById('licenceNumber').value;
+            const bloodGroup = document.getElementById('bloodGroup').value;
+
+            // Remove any existing notification
+            let existingNotification = document.getElementById('notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            if(name && dob && licenceNumber && bloodGroup) {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.id = 'notification';
+                notification.textContent = 'Register successfully';
+                notification.style.position = 'fixed';
+                notification.style.top = '20px';
+                notification.style.right = '20px';
+                notification.style.backgroundColor = '#4BB543'; // green
+                notification.style.color = 'white';
+                notification.style.padding = '10px 20px';
+                notification.style.borderRadius = '5px';
+                notification.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
+                notification.style.zIndex = '1000';
+                document.body.appendChild(notification);
+
+                // Redirect after 3 seconds
+                setTimeout(() => {
+                    window.location.href = 'donate.html';
+                }, 3000);
+            } else {
+                alert('Please fill all the fields.');
+            }
+        });
+    </script>
+
+</body>
+</html>

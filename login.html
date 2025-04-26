@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-field {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 10px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .form-footer {
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+    <h2 style="text-align:center;">Login</h2>
+
+    <div class="form-field">
+        <i class="fas fa-envelope"></i>
+        <input type="email" placeholder="E-mail" name="email" required>
+    </div>
+
+    <div class="form-field">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Password" name="password" required>
+    </div>
+
+    <button type="submit" class="btn">Log In</button>
+
+    <div class="form-footer">
+        Don't have an account? <a href="register.html">Create one</a>
+    </div>
+</form>
+
+</body>
+</html>
